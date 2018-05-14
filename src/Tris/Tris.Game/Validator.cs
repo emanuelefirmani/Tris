@@ -16,14 +16,10 @@ namespace Tris.Game
             if (DoMatch(value, value2, value3)) return true;
 
             value = strings[3];
-            var value4 = strings[4];
-            var value5 = strings[5];
+            value2 = strings[4];
+            value3 = strings[5];
 
-            if (value != null)
-            {
-                if (string.Equals(value, value4) && string.Equals(value, value5))
-                    return true;
-            }
+            if (DoMatch(value, value2, value3)) return true;
 
             return false;
         }
