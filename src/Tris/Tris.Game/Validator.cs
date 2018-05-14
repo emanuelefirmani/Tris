@@ -2,9 +2,9 @@
 {
     public class Validator
     {
-        public bool Validate()
+        public bool Validate(string[] strings)
         {
-            return false;
+            return string.Equals(strings[0], strings[1]);
         }
     }
 }
