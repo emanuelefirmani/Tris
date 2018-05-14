@@ -45,6 +45,8 @@ namespace Tris.Game.Test
         [TestCase(0, 3, 6)]
         [TestCase(1, 4, 7)]
         [TestCase(2, 5, 8)]
+        [TestCase(0, 4, 8)]
+        [TestCase(2, 4, 6)]
         public void Validate_returns_true_if_strings_match(int i1, int i2, int i3)
         {
             _sut.Validate(GetInputStrings(i1, i2, i3)).Should().BeTrue();

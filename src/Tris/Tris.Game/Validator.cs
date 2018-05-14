@@ -16,6 +16,8 @@ namespace Tris.Game
             _winningCombinations.Add(new Tuple<int, int, int>(0, 3, 6));
             _winningCombinations.Add(new Tuple<int, int, int>(1, 4, 7));
             _winningCombinations.Add(new Tuple<int, int, int>(2, 5, 8));
+            _winningCombinations.Add(new Tuple<int, int, int>(0, 4, 8));
+            _winningCombinations.Add(new Tuple<int, int, int>(2, 4, 6));
         }
 
         public bool Validate(string[] strings)
