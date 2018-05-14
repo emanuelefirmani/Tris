@@ -11,7 +11,6 @@ namespace Tris.Game.Test
         [TestCase("a", "a")]
         [TestCase("test", "test")]
         [TestCase("", "")]
-        [TestCase(null, null)]
         public void Validate_returns_true_if_strings_match(string string1, string string2)
         {
             _sut.Validate(GetInputArray(string1, string2)).Should().BeTrue();
@@ -25,6 +24,15 @@ namespace Tris.Game.Test
         {
             _sut.Validate(GetInputArray(string1, string2)).Should().BeFalse();
         }
+
+        [TestCase(null, null)]
+        [TestCase(null, "")]
+        [TestCase("a", null)]
+        public void Validate_returns_false_if_any_string_is_null(string string1, string string2)
+        {
+            _sut.Validate(GetInputArray(string1, string2)).Should().BeFalse();
+        }
+
 
         [TestCase(1)]
         [TestCase(8)]
