@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
 
 namespace Tris.Game.Test
 {
@@ -7,9 +8,9 @@ namespace Tris.Game.Test
         Validator _sut = new Validator();
 
         [Test]
-        public void Pass()
+        public void Validate_returns_false()
         {
-            Assert.True(true);            
+            _sut.Validate().Should().BeFalse();
         }
     }
 }

@@ -2,5 +2,9 @@
 {
     public class Validator
     {
+        public bool Validate()
+        {
+            return false;
+        }
     }
 }
