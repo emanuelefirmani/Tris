@@ -11,7 +11,7 @@ namespace Tris.Game
 
             var value = strings[0];
             
-            if (value == null || strings[1] == null)
+            if (value == null)
                 return false;
             
             return string.Equals(value, strings[1]) && string.Equals(value, strings[2]);
