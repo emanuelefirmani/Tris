@@ -1,18 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Tris.Game
 {
     public class Validator
     {
+        private List<Tuple<int, int, int>> _winningCombinations;
+
+        public Validator()
+        {
+            _winningCombinations = new List<Tuple<int, int, int>>();
+            _winningCombinations.Add(new Tuple<int, int, int>(0, 1, 2));
+            _winningCombinations.Add(new Tuple<int, int, int>(3, 4, 5));
+            _winningCombinations.Add(new Tuple<int, int, int>(6, 7, 8));
+            _winningCombinations.Add(new Tuple<int, int, int>(0, 3, 6));
+        }
+
         public bool Validate(string[] strings)
         {
             if(strings.Length != 9)
                 throw new Exception("Only arrays with 9 elements are allowed");
 
-            if (DoMatch(strings[0], strings[1], strings[2])) return true;
-            if (DoMatch(strings[3], strings[4], strings[5])) return true;
-            if (DoMatch(strings[6], strings[7], strings[8])) return true;
-            if (DoMatch(strings[0], strings[3], strings[6])) return true;
+            foreach (var tuple in _winningCombinations)
+            {
+                if (DoMatch(strings[tuple.Item1], strings[tuple.Item2], strings[tuple.Item3])) return true;
+            }
 
             return false;
         }
