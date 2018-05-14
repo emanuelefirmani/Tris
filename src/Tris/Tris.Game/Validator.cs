@@ -10,11 +10,22 @@ namespace Tris.Game
                 throw new Exception("Only arrays with 9 elements are allowed");
 
             var value = strings[0];
-            
-            if (value == null)
-                return false;
-            
-            return string.Equals(value, strings[1]) && string.Equals(value, strings[2]);
+
+            if (value != null)
+            {
+                if (string.Equals(value, strings[1]) && string.Equals(value, strings[2]))
+                    return true;
+            }
+
+            value = strings[3];
+
+            if (value != null)
+            {
+                if (string.Equals(value, strings[4]) && string.Equals(value, strings[5]))
+                    return true;
+            }
+
+            return false;
         }
     }
 }
