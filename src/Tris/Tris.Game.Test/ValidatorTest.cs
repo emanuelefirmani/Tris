@@ -71,6 +71,12 @@ namespace Tris.Game.Test
             _sut.Validate(GetInputStrings(0, 3, 6)).Should().BeTrue();
         }
 
+        [TestCase(0, 3, 6)]
+        public void Validate_returns_true_if_strings_036_match(int i1, int i2, int i3)
+        {
+            _sut.Validate(GetInputStrings(i1, i2, i3)).Should().BeTrue();
+        }
+
         private static string[] GetInputStrings(int i1, int i2, int i3)
         {
             var input = new string[9];
