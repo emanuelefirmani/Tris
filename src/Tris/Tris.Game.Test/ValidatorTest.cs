@@ -8,14 +8,6 @@ namespace Tris.Game.Test
     {
         Validator _sut = new Validator();
 
-        [TestCase("a", "a")]
-        [TestCase("test", "test")]
-        [TestCase("", "")]
-        public void Validate_returns_true_if_strings_match(string string1, string string2)
-        {
-            _sut.Validate(GetInputArray(string1, string2)).Should().BeTrue();
-        }
-
         [TestCase("a", "b")]
         [TestCase("test", "")]
         [TestCase(null, "")]
@@ -33,6 +25,19 @@ namespace Tris.Game.Test
             _sut.Validate(GetInputArray(string1, string2)).Should().BeFalse();
         }
 
+                
+        [TestCase("a")]
+        [TestCase("test")]
+        [TestCase("")]
+        public void Validate_returns_true_if_strings_012_match(string value)
+        {
+            var input = new string[9];
+            input[0] = value;
+            input[1] = value;
+            input[2] = value;
+
+            _sut.Validate(input).Should().BeTrue();
+        }
 
         [TestCase(1)]
         [TestCase(8)]
