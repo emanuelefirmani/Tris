@@ -12,6 +12,7 @@ namespace Tris.Game
             if (DoMatch(strings[0], strings[1], strings[2])) return true;
             if (DoMatch(strings[3], strings[4], strings[5])) return true;
             if (DoMatch(strings[6], strings[7], strings[8])) return true;
+            if (DoMatch(strings[0], strings[3], strings[6])) return true;
 
             return false;
         }
