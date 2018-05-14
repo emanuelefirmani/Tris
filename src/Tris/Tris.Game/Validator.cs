@@ -9,17 +9,9 @@ namespace Tris.Game
             if(strings.Length != 9)
                 throw new Exception("Only arrays with 9 elements are allowed");
 
-            var value = strings[0];
-            var value2 = strings[1];
-            var value3 = strings[2];
-
-            if (DoMatch(value, value2, value3)) return true;
-
-            value = strings[3];
-            value2 = strings[4];
-            value3 = strings[5];
-
-            if (DoMatch(value, value2, value3)) return true;
+            if (DoMatch(strings[0], strings[1], strings[2])) return true;
+            if (DoMatch(strings[3], strings[4], strings[5])) return true;
+            if (DoMatch(strings[6], strings[7], strings[8])) return true;
 
             return false;
         }
