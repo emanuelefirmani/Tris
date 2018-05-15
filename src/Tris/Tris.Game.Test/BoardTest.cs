@@ -28,6 +28,8 @@ namespace Tris.Game.Test
         [TestCase(8)]
         public void Board_accept_marks_only_in_positions_0to8(int position)
         {
+            _validator.Validate(Arg.Any<string[]>()).Returns(false);
+
             _sut.Invoking(s => s.AddMark(position, "mark"))
                 .Should().NotThrow();
         }
@@ -60,6 +62,8 @@ namespace Tris.Game.Test
         [TestCase(8)]
         public void Board_doesnt_accept_marks_on_already_used_positions(int position)
         {
+            _validator.Validate(Arg.Any<string[]>()).Returns(false);
+
             _sut.AddMark(position, "mark");
             _sut.Invoking(s => s.AddMark(position, "mark"))
                 .Should().Throw<Exception>().Where(e => e.Message.StartsWith("Position already used"));
@@ -68,6 +72,8 @@ namespace Tris.Game.Test
         [Test]
         public void Shouldnt_accept_marks_on_previously_used_position()
         {
+            _validator.Validate(Arg.Any<string[]>()).Returns(false);
+
             _sut.AddMark(0, "mark");
             _sut.AddMark(1, "mark");
             
@@ -85,7 +91,8 @@ namespace Tris.Game.Test
         [Test]
         public void AddMark_should_return_false_as_soon_as_is_valid()
         {
-            _validator.Validate(Arg.Any<string[]>()).Returns(true);
+            _validator.Validate(Arg.Is<string[]>(x => x[0] != "mark")).Returns(false);
+            _validator.Validate(Arg.Is<string[]>(x => x[0] == "mark")).Returns(true);
             _sut.AddMark(0, "mark").Should().BeFalse();
         }
 
@@ -97,7 +104,16 @@ namespace Tris.Game.Test
             _sut = new Board(expected, _validator);
             _sut.AddMark(0, "a");
 
-            _validator.Received(1).Validate(Arg.Is<string[]>(x => x.Equals(expected)));
+            _validator.Received(2).Validate(Arg.Is<string[]>(x => x.Equals(expected)));
+        }
+        
+        [Test]
+        public void AddMark_should_throw_if_already_valid()
+        {
+            _validator.Validate(Arg.Any<string[]>()).Returns(true);
+            
+            _sut.Invoking(s => s.AddMark(0, "mark"))
+                .Should().Throw<Exception>().Where(e => e.Message.StartsWith("Game already completed"));
         }
     }
 }

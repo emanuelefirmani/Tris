@@ -30,6 +30,9 @@ namespace Tris.Game
             if(!string.IsNullOrEmpty(_marks[position]))
                 throw new Exception($"Position already used {position}");
 
+            if (_validator.Validate(_marks))
+                throw new Exception("Game already completed");
+            
             _marks[position] = mark;
 
             return !_validator.Validate(_marks);
