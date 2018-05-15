@@ -31,5 +31,13 @@ namespace Tris.Game.Test
             _sut.Invoking(s => s.AddMark(position, "mark"))
                 .Should().Throw<Exception>().Where(e => e.Message.Contains("Invalid position"));
         }
+
+        [TestCase(null)]
+        [TestCase("")]
+        public void Should_not_accept_empty_marks(string mark)
+        {
+            _sut.Invoking(s => s.AddMark(0, mark))
+                .Should().Throw<Exception>().Where(e => e.Message.Contains("Invalid mark"));
+        }        
     }
 }
