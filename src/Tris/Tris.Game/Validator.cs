@@ -3,9 +3,14 @@ using System.Collections.Generic;
 
 namespace Tris.Game
 {
-    public class Validator
+    public interface IValidator
     {
-        private List<Tuple<int, int, int>> _winningCombinations;
+        bool Validate(string[] strings);
+    }
+
+    public class Validator : IValidator
+    {
+        private readonly List<Tuple<int, int, int>> _winningCombinations;
 
         public Validator()
         {

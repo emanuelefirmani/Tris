@@ -6,12 +6,12 @@ namespace Tris.Game
     {
         private readonly string[] _marks;
 
-        public Board()
+        public Board(IValidator validator)
         {
             _marks = new string[9];
         }
 
-        public void AddMark(int position, string mark)
+        public bool AddMark(int position, string mark)
         {
             if(position < 0 || position > 8)
                 throw  new Exception($"Invalid position {position}");
@@ -23,6 +23,8 @@ namespace Tris.Game
                 throw new Exception($"Position already used {position}");
 
             _marks[position] = mark;
+
+            return true;
         }
     }
 }
