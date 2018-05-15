@@ -7,6 +7,12 @@ namespace Tris.Game
         private readonly IValidator _validator;
         private readonly string[] _marks;
 
+        public Board()
+        {
+            _validator = new Validator();
+            _marks = new string[9];            
+        }
+
         public Board(IValidator validator)
         {
             _validator = validator;

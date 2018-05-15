@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoardTest.cs" />
+    <Compile Include="Integration\BoardTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidatorTest.cs" />
   </ItemGroup>
