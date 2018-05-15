@@ -4,10 +4,12 @@ namespace Tris.Game
 {
     public class Board
     {
+        private readonly IValidator _validator;
         private readonly string[] _marks;
 
         public Board(IValidator validator)
         {
+            _validator = validator;
             _marks = new string[9];
         }
 
@@ -24,7 +26,7 @@ namespace Tris.Game
 
             _marks[position] = mark;
 
-            return true;
+            return !_validator.Validate(_marks);
         }
     }
 }

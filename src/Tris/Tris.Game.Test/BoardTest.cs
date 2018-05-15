@@ -80,5 +80,12 @@ namespace Tris.Game.Test
             _validator.Validate(Arg.Any<string[]>()).Returns(false);
             _sut.AddMark(0, "mark").Should().BeTrue();
         }
+
+        [Test]
+        public void AddMark_should_return_false_as_soon_as_is_valid()
+        {
+            _validator.Validate(Arg.Any<string[]>()).Returns(true);
+            _sut.AddMark(0, "mark").Should().BeFalse();
+        }
     }
 }
