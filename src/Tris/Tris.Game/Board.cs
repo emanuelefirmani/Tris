@@ -4,6 +4,13 @@ namespace Tris.Game
 {
     public class Board
     {
+        private readonly string[] _marks;
+
+        public Board()
+        {
+            _marks = new string[9];
+        }
+
         public void AddMark(int position, string mark)
         {
             if(position < 0 || position > 8)
@@ -11,6 +18,11 @@ namespace Tris.Game
             
             if(string.IsNullOrEmpty(mark))
                 throw new Exception($"Invalid mark {mark}");
+            
+            if(!string.IsNullOrEmpty(_marks[position]))
+                throw new Exception($"Position already used {position}");
+
+            _marks[position] = mark;
         }
     }
 }
