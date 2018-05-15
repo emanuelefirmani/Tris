@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
@@ -86,6 +87,17 @@ namespace Tris.Game.Test
         {
             _validator.Validate(Arg.Any<string[]>()).Returns(true);
             _sut.AddMark(0, "mark").Should().BeFalse();
+        }
+
+        [Test]
+        public void AddMark_should_pass_marks_to_validator()
+        {
+            var expected = new string[9];
+
+            _sut = new Board(expected, _validator);
+            _sut.AddMark(0, "a");
+
+            _validator.Received(1).Validate(Arg.Is<string[]>(x => x.Equals(expected)));
         }
     }
 }

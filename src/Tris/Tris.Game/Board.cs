@@ -13,6 +13,12 @@ namespace Tris.Game
             _marks = new string[9];
         }
 
+        public Board(string[] marks, IValidator validator)
+        {
+            _validator = validator;
+            _marks = marks;
+        }
+
         public bool AddMark(int position, string mark)
         {
             if(position < 0 || position > 8)
